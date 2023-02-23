@@ -1,0 +1,79 @@
+Manual Test:
+1: Hãy nêu các kĩ thuật kiểm thử phần mềm mà bạn biết. Trong thực tế bạn đã sử dụng kĩ thuật nào, cho trường hợp nào?
+
+Manual Test - Automation Test
+
+Trong thực tế mình sử dụng cả 2 kĩ thuật kiểm thử:
+Manual sử dụng khi mới nhận dự án kiểm tra xem dự án sẽ đi theo luồng nào để xác định test case
+Automation: Sử dụng nhiều nhất sau khi có nắm rõ luồng chạy và test case bắt đầu vào xác định các XPATH và CSS selector nào cần lấy 
+rồi sau đó dựng chương trình chạy trên selenium - cucumber - spring boot để chạy kiểm tra lỗi hàng ngày
+
+2:Bạn có biết về load test và stress test? Nếu có, hãy phân biệt chúng, nếu không, hãy bỏ qua câu này.
+Load Test và Stress Test là cặp kỹ thuật liên quan nhau
+Load Testing: mục tiêu là kiểm tra tính ổn định trong tải cao, tải nặng hoặc tải xung đột. 
+Stress Testing: nhằm để xác định sự sụt giảm hiệu suất và các lỗi của hệ thống khi đối mặt với việc dùng thử tải cực cao.
+
+3:Regression test là gì? Khi nào cần sử dụng regression test?
+Regression test: kiểm tra tính thống nhất và độ tin cậy của các hàm, và sản phẩm phần mềm, sau khi phần mềm hoặc hàm đã được chỉnh sửa. Việc dùng regression test hỗ trợ đảm bảo rằng thay đổi không ảnh hưởng đến các yêu cầu phần mềm cũ.
+
+Những trường hợp sử dụng regression test thường xuyên gặp phải là khi:
+
+Khi muốn kiểm tra các lỗi của phần mềm.
+Khi bạn thay đổi mã hoặc sửa bug trong phần mềm.
+Khi cần so sánh với các kết quả cũ.
+
+4: Phân biệt các HTTP method sau: GET, PUT, POST, PATCH, DELETE
+GET: Yêu cầu truy cập tới tài nguyên. Hầu hết các trang web sử dụng phương thức GET để lấy và xem những dữ liệu do người dùng yêu cầu.
+PUT: Yêu cầu máy chủ nhận và lưu trữ dữ liệu, thường được sử dụng để cập nhật hay thêm vào dữ liệu.
+POST: Yêu cầu máy chủ xử lý dự liệu. Phương thức này được sử dụng để truyền dữ liệu lên máy chủ để tạo ra hoặc cập nhật dữ liệu.
+PATCH: Yêu cầu máy chủ cập nhật dữ liệu của bạn, thay vì việc sử dụng PUT để tạo một bản sao toàn bộ của dự liệu hiện có.
+DELETE: Yêu cầu máy chủ xóa dự liệu của bạn.
+
+5: Phân biệt các HTTP status code sau: 200, 201, 301, 302, 400, 404, 500, 502
+200 OK: Yêu cầu thành công.
+201 Created: tạo tài nguyên mới thành công.
+301 Moved Permanently: yêu cầu đã được chuyển hướng đến URL mới vĩnh viễn.
+302 Found: yêu cầu đã được chuyển hướng đến URL tạm thời.
+400 Bad Request: Yêu cầu không hợp lệ.
+404 Not Found: Không tìm thấy dữ liệu.
+500 Internal Server Error: Lỗi kết nối tới máy chủ( Đại khái lỗi liên quan tới máy chủ không kết nối dược)
+502 Bad Gateway: Cung cấp máy chủ xử lý yêu cầu của bạn không thành công.
+
+6: Giải thích câu lệnh SQL sau:
+	a.SELECT id, name, note from customers where id = 10;
+	b.SELECT province, count(*) as total FROM customers GROUP BY province;
+a: truy vấn SQL lấy ra các thông tin (id, name và note) trong bảng customers có id bằng 10.
+b: truy vấn đến bảng customers đếm phần tử có trong cột province sắp xếp gom nhóm dữ liệu theo cột province.
+
+
+
+Automation Test:
+
+1: Có mấy loại xpath? Dùng xpath nào trong trường hợp nào?
+Có 2 loại Xpath cơ bản là absolute xpath và relative xpath.
+
+Absolute Xpath: sử dụng tới địa chỉ tuyệt đối của một phần tử, bên cạnh đó, nó cũng có thể truy cập vào các phần tử không theo thứ tự trong HTML. Nó thường được sử dụng trong trường hợp này bởi vì chúng có thể nhanh chóng truy cập vào phần tử yêu cầu.
+
+Relative Xpath: sử dụng đến tham chiếu ngắn gọn bằng "//", để lấy đến phần tử yêu cầu. Nó sử dụng tới cấu trúc cây DOM của trang web để truy cập vào phần tử, vì vậy trong các trường hợp đó, Relative Xpath là hiệu quả hơn.
+
+Ngoài ra còn có:
+Predicate Xpath: giúp bạn lọc thông tin từ vị trí ban đầu. Việc sử dụng tiêu chuẩn Xpath trong lập trình máy tính giúp lập trình viên suy diễn và lọc các phần tử mà họ quan tâm.
+
+2: POM là gì? Dùng POM có lợi ích gì?
+
+POM viết tắt của Page Object Model
+POM là một mô hình kiến trúc software giúp quản lý các object trên UI của chương trình
+Dễ dàng tái sử dụng lại các khung lặp, thay vì nghiên cứu và code lại các câu lệnh xử lý cập nhật DOM
+
+Lợi ích:
+Ngắn gọn - dễ hiểu
+Tăng khả năng maintain, bảo trì dễ hơn
+Tối ưu các thao tác để thêm các chức năng vào chương trình
+Tái sử dụng lại code dễ dàng hơn
+Tối ưu hóa sự phức tạp của test automation structure
+Dễ dàng phối hợp với team hơn
+
+3: Câu lệnh sau đây có tác dụng gì? git commit -m"feat: add POM files"
+Tạo ra 1 Commit với message là "feat: add POM files"
+Lưu lại tất cả thay đổi đã thêm vào repo và ghi nhận nó
+
