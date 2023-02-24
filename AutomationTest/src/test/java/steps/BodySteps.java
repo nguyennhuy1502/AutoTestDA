@@ -61,7 +61,7 @@ public class BodySteps {
     public void clickWhatIsDropshippingTextLinkClickTestPopUpANewTab() {
     }
 
-    @And("Click Why ShopBase is the #{int} platform for Dropshipping? Pop up a new tab")
+    @And("Click Why ShopBase is the #1 platform for Dropshipping? Pop up a new tab")
     public void clickWhyShopBaseIsThePlatformForDropshippingPopUpANewTab(int arg0) {
     }
 
