@@ -3,18 +3,34 @@ package steps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
+import page.EmailPage;
+import page.SlideHomePage;
+import utils.CommonUtils;
 
-public class Body {
+public class BodySteps {
+
+    WebDriver driver;
+
+    private CommonUtils commonUtils;
     @When("Click Enter your email enter the correct gmail and click Start free trial")
     public void clickEnterYourEmailEnterTheCorrectGmailAndClickStartFreeTrial() {
+        EmailPage emailPage = new EmailPage(driver);
+        emailPage.emailText().sendKeys(commonUtils.getEmailWithTimeStamp());
+        emailPage.subscribe().click();
     }
 
     @And("Click Enter your email enter the missing @ and press Start free trial")
     public void clickEnterYourEmailEnterTheMissingAndPressStartFreeTrial() {
+        EmailPage emailPage = new EmailPage(driver);
+        emailPage.emailText().sendKeys(commonUtils.getEmailWithTimeStamp());
+        emailPage.subscribe().click();
     }
 
     @And("Check out the slides")
     public void checkOutTheSlides() {
+        SlideHomePage slideHomePage = new SlideHomePage(driver);
+        slideHomePage.slideHome().isDisplayed();
     }
 
     @And("Check the content below the slide")
