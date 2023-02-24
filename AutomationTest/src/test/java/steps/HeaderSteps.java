@@ -12,17 +12,16 @@ import page.HeaderPage;
 public class HeaderSteps {
     WebDriver driver;
 
-    private HeaderPage headerPage = new HeaderPage(driver);
     @Given("I am go to page")
     public void iAmGoToPage() {
         driver = DriverFactory.getDriver();
     }
 
 
-    @When("Click on Features redirect to the Features screen")
-    public void clickOnFeaturesRedirectToTheScreen() {
+    @When("Click on {string} redirect to the Features screen")
+    public void clickOnFeaturesRedirectToTheScreen(String name) {
         HeaderPage headerPage = new HeaderPage(driver);
-        headerPage.clickOnFeatures();
+        headerPage.nameHeader(name).click();
     }
 
     @And("Click on the drop-down Ecosystem to display the list of values inside")
@@ -40,9 +39,9 @@ public class HeaderSteps {
     @And("Click on the text link Templates displays the Templates screen")
     public void clickOnTheTextLinkTemplatesDisplaysTheScreen() throws InterruptedException {
         HeaderPage headerPage = new HeaderPage(driver);
-        Actions action = new Actions(driver);
-        action.moveToElement(headerPage.templates()).build().perform();
+        headerPage.templates().click();
         Thread.sleep(3000);
+        driver.navigate().back();
     }
 
     @And("Click on drop down Resources show list value in select box")
@@ -51,24 +50,24 @@ public class HeaderSteps {
         headerPage.dropdownResources();
     }
 
-    @And("Click on the Pricing")
-    public void clickOnThePricing() throws InterruptedException {
+    @And("Click on the {string}")
+    public void clickOnThePricing(String name) throws InterruptedException {
         HeaderPage headerPage = new HeaderPage(driver);
-        headerPage.clickOnPricing();
+        headerPage.nameHeader(name).click();
         Thread.sleep(3000);
     }
 
-    @Then("Click login button Redirect to login screen")
-    public void clickLoginButtonRedirectToLoginScreen() throws InterruptedException {
+    @Then("Click {string} button Redirect to login screen")
+    public void clickLoginButtonRedirectToLoginScreen(String name) throws InterruptedException {
         HeaderPage headerPage = new HeaderPage(driver);
-        headerPage.clickOnLogin();
+        headerPage.nameHeader(name).click();
         Thread.sleep(3000);
         driver.navigate().back();
     }
-    @And("Click the Start 14-day free trial button goes to the Art your free 14-day trial of ShopBase screen")
-    public void clickTheStartDayFreeTrialButtonGoesToTheArtYourFreeDayTrialOfShopBaseScreen() throws InterruptedException {
+    @And("Click the {string} button goes to the Art your free 14-day trial of ShopBase screen")
+    public void clickTheStartDayFreeTrialButtonGoesToTheArtYourFreeDayTrialOfShopBaseScreen(String name) throws InterruptedException {
         HeaderPage headerPage = new HeaderPage(driver);
-        headerPage.clickOnBtnFreeTrial();
+        headerPage.nameHeader(name).click();
         Thread.sleep(3000);
     }
 }

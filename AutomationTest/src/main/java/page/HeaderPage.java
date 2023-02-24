@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import utils.CommonUtils;
 import utils.ElementUtils;
 
 public class HeaderPage {
@@ -21,8 +20,9 @@ public class HeaderPage {
 
     }
 
-    @FindBy(xpath = "//a[contains(text(), 'Features')]")
-    public WebElement features;
+    public WebElement nameHeader(String name) {
+        return driver.findElement(By.xpath("//a[contains(text(), '" + name + "')]"));
+    }
 
     @FindBy(xpath = "//div[contains(@id, 'w-dropdown-toggle-0')]/div[1]")
     public WebElement ecosystem;
@@ -33,7 +33,7 @@ public class HeaderPage {
     @FindBy(xpath = "//nav[contains(@id,'w-dropdown-list-0')]/a[2]")
     public WebElement printBase;
 
-    @FindBy(xpath = "//nav[contains(@id,'w-dropdown-list-0')]/a[2]")
+    @FindBy(xpath = "//nav[contains(@id,'w-dropdown-list-0')]/a[3]")
     public WebElement shopBase;
 
     @FindBy(xpath = "//div[contains(@id,'w-dropdown-toggle-1')]/div[1]")
@@ -77,32 +77,17 @@ public class HeaderPage {
     public WebElement btnFreeTrial;
 
 
-    public void clickOnFeatures() {
-        elementUtils.clickOnElement(features, CommonUtils.EXPLICIT_WAIT_BASIC_TIME);
-    }
-
-    public void clickOnPricing() {
-        elementUtils.clickOnElement(pricing, CommonUtils.EXPLICIT_WAIT_BASIC_TIME);
-    }
-
-    public void clickOnLogin() {
-        elementUtils.clickOnElement(login, CommonUtils.EXPLICIT_WAIT_BASIC_TIME);
-    }
-
-    public void clickOnBtnFreeTrial() {
-        elementUtils.clickOnElement(btnFreeTrial, CommonUtils.EXPLICIT_WAIT_BASIC_TIME);
-    }
-
     public void dropdownEcosystem() throws InterruptedException {
         Actions action = new Actions(driver);
         action.moveToElement(ecosystem).build().perform();
-        Thread.sleep(5000);
+        Thread.sleep(1000);
         boolean status = plusBase.isDisplayed();
 
         if (status) {
             action.moveToElement(plusBase).build().perform();
             action.moveToElement(printBase).build().perform();
             action.moveToElement(shopBase).build().perform();
+            Thread.sleep(2000);
         }
 
     }
@@ -124,7 +109,7 @@ public class HeaderPage {
     public void dropdownResources() throws InterruptedException {
         Actions action = new Actions(driver);
         action.moveToElement(resources).build().perform();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         boolean status = blog.isDisplayed();
         if (status) {
             action.moveToElement(blog).build().perform();
