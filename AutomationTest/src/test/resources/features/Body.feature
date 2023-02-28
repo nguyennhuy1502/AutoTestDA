@@ -16,15 +16,15 @@ Feature: Check UI screen including full body
     When Check get data item Dropshipping
     Then Click What is Dropshipping Text Link Click Test? Pop up a new tab
     And Click Why ShopBase is the #1 platform for Dropshipping? Pop up a new tab
-    And Click 'Start 14-day free trial'
-    When Check get data item 'Print-On-Demand'
+    And Click Start 14-day free trial
+    When Check get data item Print On Demand
     And Click Why ShopBase is the #1 platform for POD? Pop up a new tab
-    And Click 'Start 14-day free trial'
+    And Click Start 14-day free trial
     When Check data Better Dropshipping, POD & White Label Services
     And Check If 100% Happiness Guarantee is displayed
     And Check Award-winning Support Team is displayed
     And Check Start Anywhere - Sell Globally is displayed
     And Check Scale Your Business Easily is displayed
-    And Click 'Start 14-day free trial'
-    When Check get data item 'Empowering ECommerce Businesses Around The World To Succeed'
-    And Check click button 'Get Started'
+    And Click Start 14-day free trial
+    When Check get data item Empowering ECommerce Businesses Around The World To Succeed
+    And Check click button Get Started

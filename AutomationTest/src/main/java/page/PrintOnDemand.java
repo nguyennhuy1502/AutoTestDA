@@ -17,15 +17,11 @@ public class PrintOnDemand {
         elementUtils = new ElementUtils(driver);
     }
 
-    @FindBy(id = "printondemand")
+    @FindBy(css = "#print-on-demand")
     public WebElement printOnDemand;
 
-    @FindBy(xpath = "//div[contains(@id,'w-node-_84799a24')]")
-    public WebElement featurePOD;
-
-    public WebElement linkText(int number) {
-        return driver.findElement(By.xpath("//div[contains(@id,'w-node-_84799a24')]/a[" + number + "]"));
-    }
+    @FindBy(xpath = "//div[contains(@class,'detail-feature _2')]")
+    public WebElement detailFeaturePOD;
 
     @FindBy(xpath = "//div[contains(@id,'w-node-_08839277')]")
     public WebElement imagePOD;

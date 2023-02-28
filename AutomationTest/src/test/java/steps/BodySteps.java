@@ -9,10 +9,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.Browser;
-import page.DropShippingPage;
-import page.EmailPage;
-import page.FeaturePage;
-import page.SlideHomePage;
+import page.*;
 import utils.CommonUtils;
 
 import javax.swing.*;
@@ -28,6 +25,7 @@ public class BodySteps {
     private FeaturePage featurePage;
     private EmailPage emailPage;
     private DropShippingPage dropShippingPage;
+    private PrintOnDemand printOnDemand;
 
     public void getDriver() throws InterruptedException {
         driver = DriverFactory.getDriver();
@@ -36,6 +34,7 @@ public class BodySteps {
         featurePage = new FeaturePage(driver);
         emailPage = new EmailPage(driver);
         dropShippingPage = new DropShippingPage(driver);
+        printOnDemand = new PrintOnDemand(driver);
         Thread.sleep(2000);
     }
 
@@ -149,7 +148,7 @@ public class BodySteps {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView('{behavior: \"smooth\", block: \"nearest\", inline: \"nearest\"}');", dropShippingPage.dropShipping);
         try {
-            if (dropShippingPage.dropShipping.isDisplayed()){
+            if (dropShippingPage.dropShipping.isDisplayed()) {
                 dropShippingPage.contentImg.isDisplayed();
                 dropShippingPage.contentDropShipping.isDisplayed();
                 dropShippingPage.contentDropShippingHeader.isDisplayed();
@@ -162,7 +161,7 @@ public class BodySteps {
                 dropShippingPage.linkText("What is Dropshipping?").isDisplayed();
                 dropShippingPage.linkText("Why ShopBase is the #1 platform for Dropshipping?").isDisplayed();
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
@@ -182,12 +181,21 @@ public class BodySteps {
         driver.switchTo().window(originalWindow);
     }
 
-    @When("Check get data item {string}")
-    public void checkGetDataItemPrintOnDemand() {
+    @When("Check get data item Print On Demand")
+    public void checkGetDataItemPrintOnDemand() throws InterruptedException {
+        getDriver();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView('{behavior: \"smooth\", block: \"nearest\", inline: \"nearest\"}');", printOnDemand.detailFeaturePOD);
+        printOnDemand.printOnDemand.isDisplayed();
+        printOnDemand.detailFeaturePOD.isDisplayed();
+        dropShippingPage.contentSmallDetail("Create a fully-functioning").isDisplayed();
+        dropShippingPage.contentSmallDetail("Enjoy premium printing & fulfillment services.");
+        dropShippingPage.contentSmallDetail("Be free from dealing").isDisplayed();
+        dropShippingPage.linkText("Why ShopBase is the #1 platform for POD?").isDisplayed();
     }
 
-    @And("Click Why ShopBase is the #{int} platform for POD? Pop up a new tab")
-    public void clickWhyShopBaseIsThePlatformForPODPopUpANewTab(int arg0) {
+    @And("Click Why ShopBase is the #1 platform for POD? Pop up a new tab")
+    public void clickWhyShopBaseIsThePlatformForPODPopUpANewTab() {
     }
 
     @When("Check data Better Dropshipping, POD & White Label Services")
@@ -210,7 +218,12 @@ public class BodySteps {
     public void checkScaleYourBusinessEasilyIsDisplayed() {
     }
 
-    @And("Check click button {string}")
+    @When("Check get data item Empowering ECommerce Businesses Around The World To Succeed")
+    public void checkGetDataItemEmpoweringECommerceBusinessesAroundTheWorldToSucceed(){
+
+    }
+
+    @And("Check click button Get Started")
     public void checkClickButtonGetStarted() {
     }
 }

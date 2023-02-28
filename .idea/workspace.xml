@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2f646967-efc0-4810-8278-d3d1e5105738" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutomationTest/src/main/java/page/DropShippingPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/AutomationTest/src/main/java/page/DropShippingPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutomationTest/src/main/java/page/FeatureMobilePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/AutomationTest/src/main/java/page/FeaturePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutomationTest/src/main/java/page/PrintOnDemand.java" beforeDir="false" afterPath="$PROJECT_DIR$/AutomationTest/src/main/java/page/PrintOnDemand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AutomationTest/src/test/java/steps/BodySteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/AutomationTest/src/test/java/steps/BodySteps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AutomationTest/src/test/resources/features/Body.feature" beforeDir="false" afterPath="$PROJECT_DIR$/AutomationTest/src/test/resources/features/Body.feature" afterDir="false" />
     </list>
