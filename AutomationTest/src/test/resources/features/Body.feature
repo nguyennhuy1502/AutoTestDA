@@ -10,7 +10,7 @@ Feature: Check UI screen including full body
     And Check out the slides
     And Check the content below the slide
     Then Check get data item The Partner You Need To Build An Online Business That Thrives
-    And Click 'Start 14-day free trial'
+    And Click Start 14-day free trial
     And Click  Dropshipping Pop up a new tab
     And Click  Print-on-demand Pop up a new tab
     When Check get data item Dropshipping

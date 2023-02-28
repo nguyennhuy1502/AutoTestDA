@@ -17,17 +17,32 @@ public class DropShippingPage {
         elementUtils = new ElementUtils(driver);
     }
 
-    @FindBy(id = "dropshipping")
+    @FindBy(xpath = "//div[@id = 'dropshipping']")
     public WebElement dropShipping;
 
-    @FindBy(xpath = "//div[contains(@id,'w-node-c6cefc44')]")
+    @FindBy(xpath = "//div[contains(@id,'w-node-c6cefc44')]/img")
     public WebElement contentImg;
 
     @FindBy(xpath = "//div[contains(@id,'w-node-b570ab81')]")
     public WebElement contentDropShipping;
 
-    public WebElement linkText(int number) {
-        return driver.findElement(By.xpath("//div[contains(@id,'w-node-b570ab81')]/a[" + number + "]"));
+    @FindBy(xpath = "//div[contains(@id,'w-node-b570ab81')]/h2")
+    public WebElement contentDropShippingHeader;
+
+    @FindBy(xpath = "//div[contains(@id,'w-node-b570ab81')]/p")
+    public WebElement contentDropShippingPa;
+
+    @FindBy(xpath = "//div[contains(@id,'w-node-b570ab81')]/p[2]")
+    public WebElement getContentDropShippingBusiness;
+
+    public WebElement contentSmallDetail(String name) {
+        return driver.findElement(By.xpath("//div[contains(@class,'small-detail')]/p[contains(text(),'" + name + "')]"));
     }
+
+    public WebElement linkText(String name) {
+        return driver.findElement(By.xpath("//div[@class = 'arrow-text']/strong[contains(text(), '" + name + "')]"));
+    }
+
+
 
 }

@@ -4,12 +4,20 @@ import factory.DriverFactory;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.Browser;
+import page.DropShippingPage;
 import page.EmailPage;
-import page.FeatureMobilePage;
+import page.FeaturePage;
 import page.SlideHomePage;
 import utils.CommonUtils;
+
+import javax.swing.*;
+import java.util.Iterator;
+import java.util.Set;
 
 public class BodySteps {
 
@@ -17,21 +25,26 @@ public class BodySteps {
 
     private CommonUtils commonUtils;
     private SlideHomePage slideHomePage;
-    private FeatureMobilePage featureMobilePage;
+    private FeaturePage featurePage;
     private EmailPage emailPage;
-    public void getDriver(){
+    private DropShippingPage dropShippingPage;
+
+    public void getDriver() throws InterruptedException {
         driver = DriverFactory.getDriver();
         commonUtils = new CommonUtils();
         slideHomePage = new SlideHomePage(driver);
-        featureMobilePage = new FeatureMobilePage(driver);
+        featurePage = new FeaturePage(driver);
         emailPage = new EmailPage(driver);
+        dropShippingPage = new DropShippingPage(driver);
+        Thread.sleep(2000);
     }
+
     @When("Click Enter your email enter the correct gmail and click Start free trial")
     public void clickEnterYourEmailEnterTheCorrectGmailAndClickStartFreeTrial() throws InterruptedException {
         getDriver();
         emailPage.emailText().sendKeys(commonUtils.getEmailWithTimeStamp());
         emailPage.subscribe().click();
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         driver.navigate().back();
     }
 
@@ -40,59 +53,133 @@ public class BodySteps {
         emailPage.emailText().sendKeys(commonUtils.emailIsMissingTheFollowingPart());
         Thread.sleep(1000);
         emailPage.subscribe().click();
-        emailPage.emailText().sendKeys(Keys.chord(Keys.CONTROL, "A"),Keys.BACK_SPACE);
+        emailPage.emailText().sendKeys(Keys.chord(Keys.CONTROL, "A"), Keys.BACK_SPACE);
         emailPage.emailText().sendKeys(commonUtils.emailIsMissingTheFollowingA());
         Thread.sleep(1000);
         emailPage.subscribe().click();
-        emailPage.emailText().sendKeys(Keys.chord(Keys.CONTROL, "A"),Keys.BACK_SPACE);
+        emailPage.emailText().sendKeys(Keys.chord(Keys.CONTROL, "A"), Keys.BACK_SPACE);
         emailPage.emailText().sendKeys(commonUtils.emailWrongElementAfterA());
         Thread.sleep(1000);
         emailPage.subscribe().click();
         emailPage.titleCentre().isDisplayed();
-        Thread.sleep(3000);
     }
 
     @And("Check out the slides")
-    public void checkOutTheSlides() {
+    public void checkOutTheSlides() throws InterruptedException {
         getDriver();
         slideHomePage.slideHome().isDisplayed();
     }
 
     @And("Check the content below the slide")
-    public void checkTheContentBelowTheSlide() {
+    public void checkTheContentBelowTheSlide() throws InterruptedException {
         getDriver();
-        featureMobilePage.featureWeb.isDisplayed();
-
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView('{behavior: \"smooth\", block: \"nearest\", inline: \"nearest\"}');", featurePage.linkText);
+        if (featurePage.featureWeb.isDisplayed()) {
+            featurePage.contentTitleHome.isDisplayed();
+            featurePage.contentHome.isDisplayed();
+            featurePage.linkText.isDisplayed();
+        }
     }
 
     @Then("Check get data item The Partner You Need To Build An Online Business That Thrives")
-    public void checkGetDataItemThePartnerYouNeedToBuildAnOnlineBusinessThatThrives() {
+    public void checkGetDataItemThePartnerYouNeedToBuildAnOnlineBusinessThatThrives() throws InterruptedException {
         getDriver();
-        featureMobilePage.
+        Actions action = new Actions(driver);
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView('{behavior: \"smooth\", block: \"nearest\", inline: \"nearest\"}');", featurePage.linkText);
+        featurePage.blockTextHighConversion.isDisplayed();
+        featurePage.contentHome.isDisplayed();
+        featurePage.headingText("High Conversion").isDisplayed();
+        featurePage.content("We pre-made").isDisplayed();
+        featurePage.checkLink("Dropshipping").isDisplayed();
+        action.moveToElement(featurePage.checkLink("Dropshipping")).build().perform();
+        featurePage.checkLink("Print-on-demand").isDisplayed();
+        action.moveToElement(featurePage.checkLink("Print-on-demand")).build().perform();
+        featurePage.imageScrollHighConversion.isDisplayed();
+
+        js.executeScript("arguments[0].scrollIntoView('{behavior: \"smooth\", block: \"nearest\", inline: \"nearest\"}');", featurePage.headingText("Built-in Tools"));
+        featurePage.headingText("Built-in Tools").isDisplayed();
+        featurePage.content("Empower your eCommerce business").isDisplayed();
+        featurePage.imageScrollBuiltIn.isDisplayed();
+
+        js.executeScript("arguments[0].scrollIntoView('{behavior: \"smooth\", block: \"nearest\", inline: \"nearest\"}');", featurePage.headingText("Trending Product"));
+        featurePage.headingText("Trending Product").isDisplayed();
+        featurePage.content("ShopBase takes care").isDisplayed();
+        featurePage.imageTrendingProduct.isDisplayed();
+
+        js.executeScript("arguments[0].scrollIntoView('{behavior: \"smooth\", block: \"nearest\", inline: \"nearest\"}');", featurePage.headingText("Various Payment"));
+        featurePage.headingText("Various Payment").isDisplayed();
+        featurePage.content("ShopBase provides").isDisplayed();
+        featurePage.imageVariousPayment.isDisplayed();
+
     }
 
-    @And("Click {string}")
-    public void clickStartDayFreeTrial(int arg0) {
+    @And("Click Start 14-day free trial")
+    public void clickStartDayFreeTrial() throws InterruptedException {
+        getDriver();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView('{behavior: \"smooth\", block: \"nearest\", inline: \"nearest\"}');", featurePage.linkText);
+        featurePage.linkText.click();
+        driver.navigate().back();
     }
 
     @And("Click  Dropshipping Pop up a new tab")
-    public void clickDropshippingPopUpANewTab() {
+    public void clickDropshippingPopUpANewTab() throws InterruptedException {
+        getDriver();
+        featurePage.checkLink("Dropshipping").click();
+        Thread.sleep(1000);
+        String originalWindow = driver.getWindowHandle();
+        driver.switchTo().window(originalWindow);
     }
 
     @And("Click  Print-on-demand Pop up a new tab")
-    public void clickPrintOnDemandPopUpANewTab() {
+    public void clickPrintOnDemandPopUpANewTab() throws InterruptedException {
+        getDriver();
+        featurePage.checkLink("Print-on-demand").click();
+        Thread.sleep(1000);
+        String originalWindow = driver.getWindowHandle();
+        driver.switchTo().window(originalWindow);
     }
 
     @When("Check get data item Dropshipping")
-    public void checkGetDataItemDropshipping() {
+    public void checkGetDataItemDropshipping() throws InterruptedException {
+        getDriver();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView('{behavior: \"smooth\", block: \"nearest\", inline: \"nearest\"}');", dropShippingPage.dropShipping);
+        try {
+            if (dropShippingPage.dropShipping.isDisplayed()){
+                dropShippingPage.contentImg.isDisplayed();
+                dropShippingPage.contentDropShipping.isDisplayed();
+                dropShippingPage.contentDropShippingHeader.isDisplayed();
+                dropShippingPage.contentDropShippingPa.isDisplayed();
+                dropShippingPage.contentSmallDetail("Create a fully functional").isDisplayed();
+                dropShippingPage.contentSmallDetail("Automatically optimize").isDisplayed();
+                dropShippingPage.contentSmallDetail("Source products & fulfill").isDisplayed();
+                js.executeScript("arguments[0].scrollIntoView('{behavior: \"smooth\", block: \"nearest\", inline: \"nearest\"}');", dropShippingPage.getContentDropShippingBusiness);
+                dropShippingPage.getContentDropShippingBusiness.isDisplayed();
+                dropShippingPage.linkText("What is Dropshipping?").isDisplayed();
+                dropShippingPage.linkText("Why ShopBase is the #1 platform for Dropshipping?").isDisplayed();
+            }
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Then("Click What is Dropshipping Text Link Click Test? Pop up a new tab")
-    public void clickWhatIsDropshippingTextLinkClickTestPopUpANewTab() {
+    public void clickWhatIsDropshippingTextLinkClickTestPopUpANewTab() throws InterruptedException {
+        getDriver();
+        dropShippingPage.linkText("What is Dropshipping?").click();
+        String originalWindow = driver.getWindowHandle();
+        driver.switchTo().window(originalWindow);
     }
 
     @And("Click Why ShopBase is the #1 platform for Dropshipping? Pop up a new tab")
-    public void clickWhyShopBaseIsThePlatformForDropshippingPopUpANewTab(int arg0) {
+    public void clickWhyShopBaseIsThePlatformForDropshippingPopUpANewTab() {
+        dropShippingPage.linkText("Why ShopBase is the #1 platform for Dropshipping?").click();
+        String originalWindow = driver.getWindowHandle();
+        driver.switchTo().window(originalWindow);
     }
 
     @When("Check get data item {string}")
