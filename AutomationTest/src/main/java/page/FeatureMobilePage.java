@@ -17,7 +17,10 @@ public class FeatureMobilePage {
     }
 
     @FindBy(xpath = "//div[@class='feature _2 mobile']")
-    public WebElement FeatureMobile;
+    public WebElement featureMobile;
+
+    @FindBy(xpath = "//div[@id ='the-partner-you-need-to-build-a-profitable-online-business']")
+    public WebElement featureWeb;
 
     @FindBy(xpath = "//div[@class = 'content-title-home-china _2']")
     public WebElement contentTitleHome;

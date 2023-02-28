@@ -10,10 +10,8 @@ import io.cucumber.junit.CucumberOptions;
 				 glue={"steps","hook"},
 				 publish=true,
 				 plugin={"pretty","html:target/CucumberReports/CucumberReport.html"},
-		tags = "@header"
+		tags = "@body"
 )
 public class TestRunner {
-	
-	
 
 }

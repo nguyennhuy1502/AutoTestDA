@@ -21,7 +21,7 @@ public class EmailPage {
     }
 
     public WebElement emailText(){
-        return driver.findElement(By.id("#email"));
+        return driver.findElement(By.cssSelector("input#email"));
     }
 
     public WebElement subscribe(){

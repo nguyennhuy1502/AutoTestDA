@@ -1,3 +1,4 @@
+@body
 Feature: Check UI screen including full body
 
   Background:
@@ -5,7 +6,7 @@ Feature: Check UI screen including full body
 
   Scenario: Check screen full body
     When Click Enter your email enter the correct gmail and click Start free trial
-    And Click Enter your email enter the missing @ and press Start free trial
+    And Click Enter your email enter the missing email and press Start free trial
     And Check out the slides
     And Check the content below the slide
     Then Check get data item The Partner You Need To Build An Online Business That Thrives

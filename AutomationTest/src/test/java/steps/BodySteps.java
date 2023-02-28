@@ -1,10 +1,13 @@
 package steps;
 
+import factory.DriverFactory;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import page.EmailPage;
+import page.FeatureMobilePage;
 import page.SlideHomePage;
 import utils.CommonUtils;
 
@@ -13,32 +16,59 @@ public class BodySteps {
     WebDriver driver;
 
     private CommonUtils commonUtils;
+    private SlideHomePage slideHomePage;
+    private FeatureMobilePage featureMobilePage;
+    private EmailPage emailPage;
+    public void getDriver(){
+        driver = DriverFactory.getDriver();
+        commonUtils = new CommonUtils();
+        slideHomePage = new SlideHomePage(driver);
+        featureMobilePage = new FeatureMobilePage(driver);
+        emailPage = new EmailPage(driver);
+    }
     @When("Click Enter your email enter the correct gmail and click Start free trial")
-    public void clickEnterYourEmailEnterTheCorrectGmailAndClickStartFreeTrial() {
-        EmailPage emailPage = new EmailPage(driver);
+    public void clickEnterYourEmailEnterTheCorrectGmailAndClickStartFreeTrial() throws InterruptedException {
+        getDriver();
         emailPage.emailText().sendKeys(commonUtils.getEmailWithTimeStamp());
         emailPage.subscribe().click();
+        Thread.sleep(3000);
+        driver.navigate().back();
     }
 
-    @And("Click Enter your email enter the missing @ and press Start free trial")
-    public void clickEnterYourEmailEnterTheMissingAndPressStartFreeTrial() {
-        EmailPage emailPage = new EmailPage(driver);
-        emailPage.emailText().sendKeys(commonUtils.getEmailWithTimeStamp());
+    @And("Click Enter your email enter the missing email and press Start free trial")
+    public void clickEnterYourEmailEnterTheMissingEmailAndPressStartFreeTrial() throws InterruptedException {
+        emailPage.emailText().sendKeys(commonUtils.emailIsMissingTheFollowingPart());
+        Thread.sleep(1000);
         emailPage.subscribe().click();
+        emailPage.emailText().sendKeys(Keys.chord(Keys.CONTROL, "A"),Keys.BACK_SPACE);
+        emailPage.emailText().sendKeys(commonUtils.emailIsMissingTheFollowingA());
+        Thread.sleep(1000);
+        emailPage.subscribe().click();
+        emailPage.emailText().sendKeys(Keys.chord(Keys.CONTROL, "A"),Keys.BACK_SPACE);
+        emailPage.emailText().sendKeys(commonUtils.emailWrongElementAfterA());
+        Thread.sleep(1000);
+        emailPage.subscribe().click();
+        emailPage.titleCentre().isDisplayed();
+        Thread.sleep(3000);
     }
 
     @And("Check out the slides")
     public void checkOutTheSlides() {
-        SlideHomePage slideHomePage = new SlideHomePage(driver);
+        getDriver();
         slideHomePage.slideHome().isDisplayed();
     }
 
     @And("Check the content below the slide")
     public void checkTheContentBelowTheSlide() {
+        getDriver();
+        featureMobilePage.featureWeb.isDisplayed();
+
     }
 
     @Then("Check get data item The Partner You Need To Build An Online Business That Thrives")
     public void checkGetDataItemThePartnerYouNeedToBuildAnOnlineBusinessThatThrives() {
+        getDriver();
+        featureMobilePage.
     }
 
     @And("Click {string}")

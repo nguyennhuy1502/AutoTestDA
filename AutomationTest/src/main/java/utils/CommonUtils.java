@@ -1,6 +1,7 @@
 package utils;
 
 import java.util.Date;
+import java.util.Random;
 
 public class CommonUtils {
     public static final int IMPLICIT_WAIT_TIME=10;
@@ -8,10 +9,25 @@ public class CommonUtils {
     public static final int EXPLICIT_WAIT_BASIC_TIME=50;
 
     public String getEmailWithTimeStamp() {
+        Random random = new Random();
+        int number = random.nextInt(9999);
+        return "kumkuma"+number+"@gmail.com";
 
-        Date date = new Date();
-        return "amotoori"+date.toString().replace(" ","_").replace(":","_")+"@gmail.com";
-
+    }
+    public String emailIsMissingTheFollowingPart() {
+        Random random = new Random();
+        int number = random.nextInt(9999);
+        return "kumakuma"+number;
+    }
+    public String emailIsMissingTheFollowingA() {
+        Random random = new Random();
+        int number = random.nextInt(9999);
+        return "kumakuma"+number + "@";
+    }
+    public String emailWrongElementAfterA() {
+        Random random = new Random();
+        int number = random.nextInt(9999);
+        return "kumakuma"+number + "@.";
     }
 
 }
