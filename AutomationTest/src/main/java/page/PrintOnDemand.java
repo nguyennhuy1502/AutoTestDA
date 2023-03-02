@@ -1,6 +1,5 @@
 package page;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,4 +24,7 @@ public class PrintOnDemand {
 
     @FindBy(xpath = "//div[contains(@id,'w-node-_08839277')]")
     public WebElement imagePOD;
+
+    @FindBy(xpath = "//div[contains(@id,'w-node-_84799a24')]/a[1]")
+    public WebElement linkText;
 }

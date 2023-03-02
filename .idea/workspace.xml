@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AutomationTest/src/main/java/page/PrintOnDemand.java" beforeDir="false" afterPath="$PROJECT_DIR$/AutomationTest/src/main/java/page/PrintOnDemand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AutomationTest/src/test/java/steps/BodySteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/AutomationTest/src/test/java/steps/BodySteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutomationTest/src/test/resources/features/Body.feature" beforeDir="false" afterPath="$PROJECT_DIR$/AutomationTest/src/test/resources/features/Body.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

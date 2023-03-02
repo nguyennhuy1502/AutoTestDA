@@ -8,13 +8,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.Browser;
 import page.*;
 import utils.CommonUtils;
-
-import javax.swing.*;
-import java.util.Iterator;
-import java.util.Set;
 
 public class BodySteps {
 
@@ -192,10 +187,17 @@ public class BodySteps {
         dropShippingPage.contentSmallDetail("Enjoy premium printing & fulfillment services.");
         dropShippingPage.contentSmallDetail("Be free from dealing").isDisplayed();
         dropShippingPage.linkText("Why ShopBase is the #1 platform for POD?").isDisplayed();
+        printOnDemand.imagePOD.isDisplayed();
+        printOnDemand.linkText.isDisplayed();
     }
 
     @And("Click Why ShopBase is the #1 platform for POD? Pop up a new tab")
-    public void clickWhyShopBaseIsThePlatformForPODPopUpANewTab() {
+    public void clickWhyShopBaseIsThePlatformForPODPopUpANewTab() throws InterruptedException {
+        getDriver();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView('{behavior: \"smooth\", block: \"nearest\", inline: \"nearest\"}');", printOnDemand.linkText);
+        printOnDemand.linkText.click();
+        driver.navigate().back();
     }
 
     @When("Check data Better Dropshipping, POD & White Label Services")
@@ -219,7 +221,7 @@ public class BodySteps {
     }
 
     @When("Check get data item Empowering ECommerce Businesses Around The World To Succeed")
-    public void checkGetDataItemEmpoweringECommerceBusinessesAroundTheWorldToSucceed(){
+    public void checkGetDataItemEmpoweringECommerceBusinessesAroundTheWorldToSucceed() {
 
     }
 
